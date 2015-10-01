@@ -6,6 +6,7 @@
 package jp.co.kokou.sample.simpleservlet;
 
 import java.io.IOException;
+
 import org.eclipse.jetty.testing.HttpTester;
 import org.eclipse.jetty.testing.ServletTester;
 import static org.hamcrest.CoreMatchers.containsString;
@@ -41,7 +42,7 @@ public class HelloServletTest {
 
     @Test
     public void サーブレットのテスト例() throws Exception {
-        String json = "{ \"name\": \"yamada\", \"age\": 20, \"isMarried\": false}";
+        String json = "{ \"name\": \"yamada\", \"age\": 20, \"married\": false}";
         String req = createRequest(json);
 
         String res = tester.getResponses(req);

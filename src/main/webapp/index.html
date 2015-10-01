@@ -21,7 +21,7 @@ and open the template in the editor.
                     var JSONdata = {
                         name: $("#name").val(),
                         age: parseInt($("#age").val(), 10),
-                        isMarried: $("#is_married").is(':checked')
+                        married: $("#married").is(':checked')
                     };
 
                     alert(JSON.stringify(JSONdata));
@@ -54,10 +54,10 @@ and open the template in the editor.
     </head>
     <body>
         <h1>HTMLファイルからPOSTでJSONデータを送信する</h1>
-        <p>URL: <input type="text" id="url_post" name="url" size="100" value="http://localhost:7001/simpleservlet/hello"></p>
+        <p>URL: <input type="text" id="url_post" name="url" size="100" value="http://localhost:7001/hello"></p>
         <p>名前: <input type="text" id="name" size="30" /></p>
         <p>年齢: <input type="text" id="age" size="30" /></p>
-        <p>既婚: <input type="checkbox" id="is_married" /></p>
+        <p>既婚: <input type="checkbox" id="married" /></p>
         <p><button id="button" type="button">送信</button></p>
         <textarea id="response" cols=120 rows=10 disabled></textarea>
     </body>

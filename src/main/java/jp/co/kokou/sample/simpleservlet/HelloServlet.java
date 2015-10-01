@@ -13,7 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.AllArgsConstructor;
+import jp.co.kokou.sample.model.Person;
+import jp.co.kokou.sample.service.DefaultPersonService;
+import jp.co.kokou.sample.service.PersonService;
 
 /**
  *
@@ -24,9 +26,16 @@ import lombok.AllArgsConstructor;
 public class HelloServlet extends HttpServlet {
 
     private static final ObjectMapper mapper = new ObjectMapper();
+    transient private PersonService service = new DefaultPersonService();
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * クライアントからのPOSTリクエストに応答する。
+     * クライアントからは Person を表わす JSON フォーマットでコンテンツが送られてくる
+     *
+     * リクエストのフォーマットが想定外である場合は ServletException 例外を投げる
+     * 受け取ったリクエストから Personインスタンスを構築して、結果は PersonService サービスにおまかせ
+     *
+     * 戻ってきた Result を再び JSONフォーマットに直してレスポンスする
      *
      * @param request  servlet request
      * @param response servlet response
@@ -44,33 +53,10 @@ public class HelloServlet extends HttpServlet {
             response.setContentType("application/json;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
 
-                if (person.name == null) {
-                    mapper.writeValue(out, new Result(1, "No name indicated."));
-                    return;
-                } else if (person.name.isEmpty()) {
-                    mapper.writeValue(out, new Result(1, "Name is empty"));
-                    return;
-                }
-
-                mapper.writeValue(out, new Result(0, "Success!"));
+                mapper.writeValue(out, service.getResult(person));
             }
         } catch (JsonProcessingException ex) {
             throw new ServletException("Invalid Json Request", ex);
         }
     }
-
-    private static class Person {
-
-        public String name;
-        public int age;
-        public boolean isMarried;
-    }
-
-    @AllArgsConstructor
-    private static class Result {
-
-        public int status;
-        public String message;
-    }
-
 }
