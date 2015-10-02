@@ -196,14 +196,6 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>findbugs-maven-plugin</artifactId>
                 <version>3.0.2</version>
-                <executions>
-                    <execution>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                </executions>
                 <configuration>
                     <effort>Max</effort>
                     <threshold>Low</threshold>
@@ -282,15 +274,6 @@
                         <ruleset>/rulesets/java/unusedcode.xml</ruleset>
                     </rulesets>
                 </configuration>
-                <executions>
-                    <execution>
-                        <phase>process-sources</phase>
-                        <goals>
-                            <goal>check</goal>
-                            <goal>cpd-check</goal>
-                        </goals>
-                    </execution>
-                </executions>
             </plugin>
             <!-- クロスリファレンスの設定 -->
             <plugin>
