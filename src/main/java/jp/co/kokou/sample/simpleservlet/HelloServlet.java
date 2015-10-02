@@ -59,4 +59,13 @@ public class HelloServlet extends HttpServlet {
             throw new ServletException("Invalid Json Request", ex);
         }
     }
+
+    /**
+     * PersonServiceを切り替える
+     *
+     * @param service サービスの実装
+     */
+    void setPersonService(PersonService service) {
+        this.service = service;
+    }
 }
