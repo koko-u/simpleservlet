@@ -7,7 +7,6 @@ package jp.co.kokou.sample.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
 
 /**
  *
@@ -17,10 +16,8 @@ import lombok.Setter;
 public class Result {
 
     @Getter
-    @Setter
-    private int status;
+    private final int status;
     @Getter
-    @Setter
-    private String message;
+    private final String message;
 
 }
