@@ -1,5 +1,6 @@
 package jp.co.kokou.sample.model;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,6 +11,7 @@ import lombok.Setter;
  * @author kozaki
  */
 @NoArgsConstructor
+@EqualsAndHashCode
 public class Person {
 
     /**

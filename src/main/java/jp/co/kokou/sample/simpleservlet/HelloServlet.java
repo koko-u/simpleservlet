@@ -55,7 +55,7 @@ public class HelloServlet extends HttpServlet {
             response.setContentType("application/json;charset=UTF-8");
             try (PrintWriter out = response.getWriter()) {
 
-                mapper.writeValue(out, service.getResult(person));
+                out.write(service.getResult(person).toJson());
             }
         } catch (JsonProcessingException ex) {
             throw new ServletException("Invalid Json Request", ex);
