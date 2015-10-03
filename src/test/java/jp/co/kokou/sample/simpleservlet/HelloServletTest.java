@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import jp.co.kokou.sample.model.Person;
 import jp.co.kokou.sample.model.Result;
+import jp.co.kokou.sample.model.Result.Status;
 import jp.co.kokou.sample.service.PersonService;
 import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.testing.HttpTester;
@@ -47,7 +48,7 @@ public class HelloServletTest {
 
     @Test
     public void 正常なリクエストを受け付けた_HTTPステータスは200() throws Exception {
-        when(service.getResult(any(Person.class))).thenReturn(new Result(0, "ok"));
+        when(service.getResult(any(Person.class))).thenReturn(new Result(Status.OK, "ok"));
         String json = "{ \"name\": \"yamada\", \"age\": 20, \"married\": false}";
         String req = createRequest(json);
 
@@ -59,7 +60,7 @@ public class HelloServletTest {
 
     @Test
     public void 正常なリクエストを受け付けた_PersonServiceに応じたレスポンスを得る() throws Exception {
-        when(service.getResult(any(Person.class))).thenReturn(new Result(0, "ok"));
+        when(service.getResult(any(Person.class))).thenReturn(new Result(Status.OK, "ok"));
         String json = "{ \"name\": \"yamada\", \"age\": 20, \"married\": false}";
         String req = createRequest(json);
 
@@ -71,7 +72,7 @@ public class HelloServletTest {
 
     @Test
     public void 予定外のキーを持つリクエストを受け付けた_ステータスは500となる() throws Exception {
-        when(service.getResult(any(Person.class))).thenReturn(new Result(0, "ok"));
+        when(service.getResult(any(Person.class))).thenReturn(new Result(Status.OK, "ok"));
         String json = "{ \"name\": \"yamada\",\"age\": 20, \"married\": false、 \"hobby\": \"jogging\"}";
         String req = createRequest(json);
 

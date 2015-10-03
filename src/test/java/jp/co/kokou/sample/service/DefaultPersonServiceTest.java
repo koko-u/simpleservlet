@@ -2,6 +2,7 @@ package jp.co.kokou.sample.service;
 
 import jp.co.kokou.sample.model.Person;
 import jp.co.kokou.sample.model.Result;
+import jp.co.kokou.sample.model.Result.Status;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.containsString;
@@ -27,7 +28,7 @@ public class DefaultPersonServiceTest {
 
         Result result = sut.getResult(person);
 
-        assertThat(result.getStatus(), is(0));
+        assertThat(result.getStatus(), is(Status.OK));
         assertThat(result.getMessage(), is(containsString("Success")));
 
     }
@@ -45,7 +46,7 @@ public class DefaultPersonServiceTest {
 
         Result result = sut.getResult(person);
 
-        assertThat(result.getStatus(), is(1));
+        assertThat(result.getStatus(), is(Status.NG));
         assertThat(result.getMessage(), is(containsString("No name")));
     }
 
@@ -62,7 +63,7 @@ public class DefaultPersonServiceTest {
 
         Result result = sut.getResult(person);
 
-        assertThat(result.getStatus(), is(1));
+        assertThat(result.getStatus(), is(Status.NG));
         assertThat(result.getMessage(), is(containsString("empty")));
     }
 
@@ -79,7 +80,7 @@ public class DefaultPersonServiceTest {
 
         Result result = sut.getResult(person);
 
-        assertThat(result.getStatus(), is(1));
+        assertThat(result.getStatus(), is(Status.NG));
         assertThat(result.getMessage(), is(containsString("future")));
     }
 
@@ -96,7 +97,7 @@ public class DefaultPersonServiceTest {
 
         Result result = sut.getResult(person);
 
-        assertThat(result.getStatus(), is(1));
+        assertThat(result.getStatus(), is(Status.NG));
         assertThat(result.getMessage(), is(containsString("too past")));
     }
 }

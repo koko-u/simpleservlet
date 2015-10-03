@@ -12,15 +12,20 @@ import lombok.Getter;
 public class Result {
 
     /**
-     * ステータス 0: 正常、1:異常
+     * ステータス
      */
     @Getter
-    private final int status;
+    private final Status status;
 
     /**
      * ステータスを補足するメッセージ
      */
     @Getter
     private final String message;
+
+    public enum Status {
+
+        OK, NG
+    }
 
 }
