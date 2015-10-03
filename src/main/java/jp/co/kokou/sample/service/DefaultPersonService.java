@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package jp.co.kokou.sample.service;
 
 import jp.co.kokou.sample.model.Person;
@@ -11,6 +6,7 @@ import jp.co.kokou.sample.model.Result;
 /**
  * デフォルトのパーソン ⇒ 結果 サービス
  *
+ * <p>
  * 名前が空である場合、null である場合は文句を言う
  * 年齢がマイナスの場合、100才を越える場合も文句を言う
  *
@@ -18,6 +14,9 @@ import jp.co.kokou.sample.model.Result;
  */
 public class DefaultPersonService implements PersonService {
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Result getResult(Person person) {
         if (person.getName() == null) {

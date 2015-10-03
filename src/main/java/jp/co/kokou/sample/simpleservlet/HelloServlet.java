@@ -18,6 +18,7 @@ import jp.co.kokou.sample.service.DefaultPersonService;
 import jp.co.kokou.sample.service.PersonService;
 
 /**
+ * サービスを実行するサーブレット
  *
  * @author kozaki
  */
@@ -29,13 +30,14 @@ public class HelloServlet extends HttpServlet {
     transient private PersonService service = new DefaultPersonService();
 
     /**
-     * クライアントからのPOSTリクエストに応答する。
+     * クライアントからのPOSTリクエストに応答する
      * クライアントからは Person を表わす JSON フォーマットでコンテンツが送られてくる
      *
+     * <p>
      * リクエストのフォーマットが想定外である場合は ServletException 例外を投げる
      * 受け取ったリクエストから Personインスタンスを構築して、結果は PersonService サービスにおまかせ
      *
-     * 戻ってきた Result を再び JSONフォーマットに直してレスポンスする
+     * <p>戻ってきた Result を再び JSONフォーマットに直してレスポンスする
      *
      * @param request  servlet request
      * @param response servlet response
